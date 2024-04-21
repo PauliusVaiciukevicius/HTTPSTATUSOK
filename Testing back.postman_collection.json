@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "c3a54137-065e-4e9a-b6d6-77f670cfb4de",
+		"name": "Testing back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33371562",
+		"_collection_link": "https://www.postman.com/tickerx20/workspace/my-workspace/collection/33371562-c3a54137-065e-4e9a-b6d6-77f670cfb4de?action=share&source=collection_link&creator=33371562"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base Url1}}/auth/authenticate",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"auth",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"user22\",\r\n  \"password\": \"user22\",\r\n  \"name\": \"User22\",\r\n  \"email\": \"user99@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base Url1}}/auth/signup",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"\tpm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQxNDM5NjksImlhdCI6MTcxMzU0Mzk2OSwianRpIjoiOGU1OGU1MzEtYjBlMS00OGYzLTg0ZWQtMWRmZDc1NWMyZjQzIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMjIiLCJyb2wiOlsiVVNFUiJdLCJuYW1lIjoiVXNlcjIyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjIyIiwiZW1haWwiOiJ1c2VyOTlAZ21haWwuY29tIn0.5jIu1yZtz3x79hgcn8hj3r111OnTTmpiyv44wZ3EFvi8yiX_vYL89pyD82zqIahzpO6YOAtQKQU5YheaRwbaSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"Project description1\",\r\n  \"projectName\": \"new Project name1\",\r\n  \"projectStatus\": \"Project status\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base Url1}}/api/projects",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin",
+							"disabled": true
+						},
+						{
+							"key": "passsword",
+							"value": "admin",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTE5OTIsImlhdCI6MTcxMzQ1MTk5MiwianRpIjoiOWE5OTdlZGUtY2UwYS00MWQxLWEwZDYtMGU5OWIwZTlmNjE0IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.lbMkzVPQnOowwZor1qlwhTK4PoW2IZfLC0vvjkev4YNmNsxEbJ03byi22wgxnCmkjB5vvFs6blR2E1rKwg5Hnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{Base Url1}}/api/projects/:id",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "admin",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "admin",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "9c715cf9-4adb-4b48-878f-d670da399e38"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit projects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"\tpm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"\tpm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTE5OTIsImlhdCI6MTcxMzQ1MTk5MiwianRpIjoiOWE5OTdlZGUtY2UwYS00MWQxLWEwZDYtMGU5OWIwZTlmNjE0IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.lbMkzVPQnOowwZor1qlwhTK4PoW2IZfLC0vvjkev4YNmNsxEbJ03byi22wgxnCmkjB5vvFs6blR2E1rKwg5Hnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"new Project description99999\",\r\n  \"projectName\": \"new Project name\",\r\n  \"projectStatus\": \"Project status\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base Url1}}/api/projects/:id",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "54c7c54d-36e8-40e1-827f-3a0ddb920064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Projects Number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/public/numberOfProjects",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"public",
+						"numberOfProjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Myprojects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"\tpm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTE5OTIsImlhdCI6MTcxMzQ1MTk5MiwianRpIjoiOWE5OTdlZGUtY2UwYS00MWQxLWEwZDYtMGU5OWIwZTlmNjE0IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.lbMkzVPQnOowwZor1qlwhTK4PoW2IZfLC0vvjkev4YNmNsxEbJ03byi22wgxnCmkjB5vvFs6blR2E1rKwg5Hnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/api/projects/myprojects",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"myprojects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allProjects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTE5OTIsImlhdCI6MTcxMzQ1MTk5MiwianRpIjoiOWE5OTdlZGUtY2UwYS00MWQxLWEwZDYtMGU5OWIwZTlmNjE0IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.lbMkzVPQnOowwZor1qlwhTK4PoW2IZfLC0vvjkev4YNmNsxEbJ03byi22wgxnCmkjB5vvFs6blR2E1rKwg5Hnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/api/projects/allprojects",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"allprojects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQxNDM1MDYsImlhdCI6MTcxMzU0MzUwNiwianRpIjoiNTZlNWZmMWYtMTc2NC00ZGZkLWI2MDctOTNmNmExYWNiNTZhIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.7UZbg3qACYiaGLT9m9C_EYJHHAehUgtzXO68mb1kyWCRrfOPDgUGzseHt-dNEQTSUe-zQtuPpCG29Q6YSuQuxQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/api/users",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQxNDQwMTEsImlhdCI6MTcxMzU0NDAxMSwianRpIjoiYjUwNjQwMGYtOTIyOS00MmQwLTgzYzYtZWQzMzY2MzkyNzg4IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.6FoCSFtfkchecuao1kfNE6Ydh3FGLLkWnfeqTV3bc-f_pbpejkQnCX4UkgytJ-OxTPZbcWh7M7Kwr9hvCq5AUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/api/users/:username",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"users",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "user22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQxNDQyNjAsImlhdCI6MTcxMzU0NDI2MCwianRpIjoiZTVmNDIxODUtMzRlMC00NDBmLWJiMjktZmJmNGU1ZjBiNDQ0IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.KRfax4BturzoCLROUg0FKcwGuUhJCMbZ1VbVgVaMYIwYik3V90lEdw8Ie9c0TJCg-mCwhHRvISoSTb895k2KVw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base Url1}}/api/users/:username",
+					"host": [
+						"{{Base Url1}}"
+					],
+					"path": [
+						"api",
+						"users",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "user22"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
