@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "f347da25-f11a-47b1-869a-ebff27418c04",
+		"name": "Register Page FR0 Back_end",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30320510"
+	},
+	"item": [
+		{
+			"name": "User-controller",
+			"item": [
+				{
+					"name": "users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTEyNjUsImlhdCI6MTcxMzQ1MTI2NSwianRpIjoiOTU3ZTQyMjQtNTRlZC00YzkxLWJlMjYtYzc4NGY4M2MwZjE5IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMyIsInJvbCI6WyJVU0VSIl0sIm5hbWUiOiJVc2VyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BnbWFpbC5jb20ifQ._WsFdw-7T_zae5PvHpN_xIQCbYh1nwgs0Cys9anZc1n_fi6ktq9TC2n6baqWmthAfrw1y_R1raS7fjgWOsJ-AQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users/{username}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTEyNjUsImlhdCI6MTcxMzQ1MTI2NSwianRpIjoiOTU3ZTQyMjQtNTRlZC00YzkxLWJlMjYtYzc4NGY4M2MwZjE5IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMyIsInJvbCI6WyJVU0VSIl0sIm5hbWUiOiJVc2VyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BnbWFpbC5jb20ifQ._WsFdw-7T_zae5PvHpN_xIQCbYh1nwgs0Cys9anZc1n_fi6ktq9TC2n6baqWmthAfrw1y_R1raS7fjgWOsJ-AQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api/users/:username",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "user3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{BaseUrl}}/api/users/{username}"
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTEyNjUsImlhdCI6MTcxMzQ1MTI2NSwianRpIjoiOTU3ZTQyMjQtNTRlZC00YzkxLWJlMjYtYzc4NGY4M2MwZjE5IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMyIsInJvbCI6WyJVU0VSIl0sIm5hbWUiOiJVc2VyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BnbWFpbC5jb20ifQ._WsFdw-7T_zae5PvHpN_xIQCbYh1nwgs0Cys9anZc1n_fi6ktq9TC2n6baqWmthAfrw1y_R1raS7fjgWOsJ-AQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/api/users/me"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project-controller",
+			"item": [
+				{
+					"name": "projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTMxOTksImlhdCI6MTcxMzQ1MzE5OSwianRpIjoiNmE4YzBkOTMtNjViNy00MzRjLWJjMDYtMjM3ZjljODdjZjYxIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.g0kxDF7psiBedaHk_KVEPOHi49y3u7pHuyjPtC3A5nb_0H2wHquEiRcnF5GbcPsmUZ6qkoTOey-pLpbh2kab_A"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"new Project description\",\r\n  \"projectName\": \"new Project name\",\r\n  \"projectStatus\": \"new Project status\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/projects/:id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "38b8e868-0ba8-4acf-b393-8bc6cd17f662"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "projects",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// var projectID = pm.variables.replaceIn(\"{{$randomInt}}\");\r",
+									"// pm.collectionVariables.set(\"projectID\", projectID);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTEyNjUsImlhdCI6MTcxMzQ1MTI2NSwianRpIjoiOTU3ZTQyMjQtNTRlZC00YzkxLWJlMjYtYzc4NGY4M2MwZjE5IiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMyIsInJvbCI6WyJVU0VSIl0sIm5hbWUiOiJVc2VyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BnbWFpbC5jb20ifQ._WsFdw-7T_zae5PvHpN_xIQCbYh1nwgs0Cys9anZc1n_fi6ktq9TC2n6baqWmthAfrw1y_R1raS7fjgWOsJ-AQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Project description\",\r\n  \"projectName\": \"Project name\",\r\n  \"projectStatus\": \"Project status\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/projects?username=admin&password=admin",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"projects"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allprojects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTMxOTksImlhdCI6MTcxMzQ1MzE5OSwianRpIjoiNmE4YzBkOTMtNjViNy00MzRjLWJjMDYtMjM3ZjljODdjZjYxIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.g0kxDF7psiBedaHk_KVEPOHi49y3u7pHuyjPtC3A5nb_0H2wHquEiRcnF5GbcPsmUZ6qkoTOey-pLpbh2kab_A"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/api/projects/allprojects"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQwNTMxOTksImlhdCI6MTcxMzQ1MzE5OSwianRpIjoiNmE4YzBkOTMtNjViNy00MzRjLWJjMDYtMjM3ZjljODdjZjYxIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJhZG1pbiIsInJvbCI6WyJBRE1JTiJdLCJuYW1lIjoiQWRtaW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbXljb21wYW55LmNvbSJ9.g0kxDF7psiBedaHk_KVEPOHi49y3u7pHuyjPtC3A5nb_0H2wHquEiRcnF5GbcPsmUZ6qkoTOey-pLpbh2kab_A"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api/projects/:id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "395c2fa3-17d0-461b-b147-d4be5a09629a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "public-controller",
+			"item": [
+				{
+					"name": "numberOfUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/public/numberOfUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "numberOfProjects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/public/numberOfProjects"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth-controller",
+			"item": [
+				{
+					"name": "signup",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let random = Math.random().toString(36).substring(2);\r",
+									"\r",
+									"let username = \"Emi\" + random;\r",
+									"let pasword = \"Emi\" + random;\r",
+									"let name = \"Emi\" + random;\r",
+									"let useremail = \"Emi\" + random + \"@gmail.com\";\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.environment.set(\"username\", username);\r",
+									"pm.environment.set(\"pasword\", pasword);\r",
+									"pm.environment.set(\"name\", name);\r",
+									"pm.environment.set(\"useremail\", useremail);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{pasword}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"email\": \"{{useremail}}\"\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"username\": \"admin\",\r\n//   \"password\": \"admin\"\r\n// }\r\n{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{pasword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/auth/authenticate"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTMzNDIwODEsImlhdCI6MTcxMzI4MjA4MSwianRpIjoiOGQwMTNlNWItN2UzMy00MzI4LThhNTctN2ZjNzBlMTZkMTBjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyMyIsInJvbCI6WyJVU0VSIl0sIm5hbWUiOiJVc2VyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BnbWFpbC5jb20ifQ.NHcx_9qOoF1GL7KdNopaQzBDEa_dQqGtuje6ZyDkmWxVE7GQ0bwB3OO-q_TwaZHPGidIMPyjMok59VTwQ2qG0w"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "projectID",
+			"value": ""
+		}
+	]
+}
