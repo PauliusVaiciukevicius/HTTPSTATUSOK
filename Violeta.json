@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "d62147d4-e1c7-4ae6-b5fb-da5e1f4a5b3e",
+		"name": "HTTP_STATUS_OK collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30465353"
+	},
+	"item": [
+		{
+			"name": "project-controller",
+			"item": [
+				{
+					"name": "Get Me projects",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"projectName\": \"string\",\n    \"projectState\": \"string\",\n    \"user\": [\n      {\n        \"username\": \"string\"\n      }\n    ],\n    \"createdAt\": \"2024-04-20T13:03:21.334Z\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Base_url.}}/api/projects/myprojects"
+					},
+					"response": []
+				},
+				{
+					"name": "New project",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var projectID = pm.variables.replaceIn(\"{{$randomInt}}\");",
+									"pm.collectionVariables.set(\"projectID\", projectID);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Naujas projektas kazka daryti \",\n  \"projectName\": \"Projektas\",\n  \"projectStatus\": \"New\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_url.}}/api/projects?username=admin&password=admin",
+							"host": [
+								"{{Base_url.}}"
+							],
+							"path": [
+								"api",
+								"projects"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_url.}}/api/projects/:username",
+							"host": [
+								"{{Base_url.}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "{{userName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"new Project description\",\n  \"projectName\": \"new Project name\",\n  \"projectStatus\": \"new Project status\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_url.}}/api/projects/:id",
+							"host": [
+								"{{Base_url.}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7a9b851c-d94c-45de-87f2-7df0d27d0c36"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "auth-controller",
+					"item": [
+						{
+							"name": "Register",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let random = Math.random().toString(36).substring(2);",
+											"",
+											"let userEmail = \"Violeta\" + random + \"@gmail.com\";",
+											"",
+											"let userName = \"Violeta\" + random;",
+											"",
+											"pm.environment.set(\"email\", userEmail);",
+											"pm.environment.set(\"userName\", userName);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{userName}}\",\n    \"password\": \"Violeta\",\n    \"name\": \"Violeta\",\n    \"email\": \"{{email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Base_url.}}/auth/signup"
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQzMjI1NjIsImlhdCI6MTcxMzcyMjU2MiwianRpIjoiYzYyYzk4YmMtNzU3Ny00NjQ4LTlhNGMtOWQ0YTFhNzUyZGZjIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.Bhzi1i_DgT8Rpv9rqoFkt5C9F_1_AViWcOjfOmpeL_85gu4zATtg_eVTzCWpgO_DXwUrcrV5zLG7VR0mxw5kZQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\n//   \"username\": \"admin\",\n//   \"password\": \"admin\"\n// }\n{\n  \"username\": \"{{userName}}\",\n  \"password\": \"Violeta123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Base_url.}}/auth/authenticate"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User-controller",
+					"item": [
+						{
+							"name": "users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Base_url.}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "/api/users/{username}",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Me",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{Base_url.}}/api/users/{username}"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQyMTE1NjgsImlhdCI6MTcxMzYxMTU2OCwianRpIjoiNGEwNGU0M2ItYTQzMy00M2Y4LTgxMTUtZTYzODVkNWY3ZjcwIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.CibymkGXckxlXm-VgY2rtFfSopqocZeJ0HCo351JhNOfIsNOl8pc3Sg3k9YptGDuCroq24lHwjGz1sVGGY9C9g"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Base_url.}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get users detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTQyMTE1NjgsImlhdCI6MTcxMzYxMTU2OCwianRpIjoiNGEwNGU0M2ItYTQzMy00M2Y4LTgxMTUtZTYzODVkNWY3ZjcwIiwiaXNzIjoib3JkZXItYXBpIiwiYXVkIjpbIm9yZGVyLWFwcCJdLCJzdWIiOiJ1c2VyIiwicm9sIjpbIlVTRVIiXSwibmFtZSI6IlVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQG15Y29tcGFueS5jb20ifQ.CibymkGXckxlXm-VgY2rtFfSopqocZeJ0HCo351JhNOfIsNOl8pc3Sg3k9YptGDuCroq24lHwjGz1sVGGY9C9g"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_url.}}/users/:username",
+							"host": [
+								"{{Base_url.}}"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "users"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "public-controller",
+			"item": [
+				{
+					"name": "numberOfUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{Base_url.}}/public/numberOfUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "numberOfProjects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{Base_url.}}/public/numberOfProjects"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "userName",
+			"value": ""
+		},
+		{
+			"key": "randomEmail",
+			"value": ""
+		},
+		{
+			"key": "projectID",
+			"value": ""
+		}
+	]
+}
